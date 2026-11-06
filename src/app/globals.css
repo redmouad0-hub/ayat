@@ -58,7 +58,7 @@ select:focus-visible {
 
 .site-shell {
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: clip;
   padding-bottom: 105px;
 }
 
@@ -230,11 +230,11 @@ select:focus-visible {
 .hero-button {
   align-items: center;
   background: var(--green);
-  border-radius: 3px;
+  border-radius: 8px;
   box-shadow: 0 7px 17px rgba(22, 75, 59, 0.14);
   color: white;
   display: inline-flex;
-  font-size: 13px;
+  font-size: 16px;
   gap: 22px;
   padding: 12px 19px;
   transition: background 160ms ease, transform 160ms ease;
@@ -541,6 +541,12 @@ select:focus-visible {
   z-index: 8;
 }
 
+.suggestions {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  z-index: 12;
+}
+
 .suggestion,
 .surah-option,
 .moshaf-option {
@@ -644,6 +650,9 @@ select:focus-visible {
 
 .surah-options {
   max-height: 230px;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  z-index: 12;
 }
 
 .surah-option {
@@ -888,6 +897,31 @@ select:focus-visible {
   height: 1px;
 }
 
+.back-to-top {
+  align-items: center;
+  background: var(--green);
+  border: 1px solid rgba(255, 254, 250, 0.75);
+  border-radius: 50%;
+  bottom: 100px;
+  box-shadow: 0 4px 14px rgba(22, 75, 59, 0.2);
+  color: #fffefa;
+  cursor: pointer;
+  display: inline-flex;
+  height: 44px;
+  justify-content: center;
+  inset-inline-end: 24px;
+  padding: 0;
+  position: fixed;
+  transition: background 160ms ease, transform 160ms ease;
+  width: 44px;
+  z-index: 11;
+}
+
+.back-to-top:hover {
+  background: #205b48;
+  transform: translateY(-2px);
+}
+
 @media (max-width: 900px) {
   .site-header {
     padding-inline: 28px;
@@ -1128,6 +1162,13 @@ select:focus-visible {
     padding: 10px 15px;
   }
 
+  .back-to-top {
+    bottom: 122px;
+    height: 42px;
+    inset-inline-end: 16px;
+    width: 42px;
+  }
+
   .player-track {
     flex: 1;
     min-width: 0;
@@ -1179,4 +1220,16 @@ select:focus-visible {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+.site-header,
+.site-header .brand strong,
+.intro,
+.intro h2,
+.listening-panel,
+.listening-panel .panel-heading h2,
+.features,
+.site-footer,
+.site-footer .footer-brand {
+  font-family: var(--font-amiri), serif;
 }

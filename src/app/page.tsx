@@ -27,7 +27,14 @@ function Icon({
   name,
   size = 20,
 }: {
-  name: "search" | "book" | "headphones" | "play" | "check" | "sparkles";
+  name:
+    | "search"
+    | "book"
+    | "headphones"
+    | "play"
+    | "check"
+    | "sparkles"
+    | "arrowUp";
   size?: number;
 }) {
   const paths = {
@@ -57,6 +64,7 @@ function Icon({
         <path d="m19 14 1.2 2.8L23 18l-2.8 1.2L19 22l-1.2-2.8L15 18l2.8-1.2L19 14Z" />
       </>
     ),
+    arrowUp: <path d="m5 12 7-7 7 7M12 19V5" />,
   };
 
   return (
@@ -108,11 +116,25 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState("");
   const [playerError, setPlayerError] = useState("");
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const reciterSearchRef = useRef<HTMLDivElement>(null);
   const moshafSelectRef = useRef<HTMLDivElement>(null);
   const moshafTriggerRef = useRef<HTMLButtonElement>(null);
   const surahSearchRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function updateBackToTopVisibility() {
+      setShowBackToTop(window.scrollY > 0);
+    }
+
+    updateBackToTopVisibility();
+    window.addEventListener("scroll", updateBackToTopVisibility, {
+      passive: true,
+    });
+    return () =>
+      window.removeEventListener("scroll", updateBackToTopVisibility);
+  }, []);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -302,6 +324,21 @@ export default function Home() {
     setPlayerError("تعذر تشغيل هذا المقطع. قد يكون الخادم غير متاح مؤقتًا.");
   }
 
+  function handleAudioEnded() {
+    if (!selectedSurah) return;
+
+    const currentIndex = availableSurahs.findIndex(
+      (surah) => surah.id === selectedSurah.id,
+    );
+    if (currentIndex < 0) return;
+
+    const nextSurah = availableSurahs[currentIndex + 1];
+    if (!nextSurah) return;
+
+    setSelectedSurah(nextSurah);
+    setPlayerError("");
+  }
+
   return (
     <main className="site-shell" dir="rtl">
       <header className="site-header">
@@ -343,9 +380,9 @@ export default function Home() {
             <span>واطمئن بآياته.</span>
           </h1>
           
-          <a className="hero-button" href="#reciter">
+          <a className="hero-button " href="#reciter">
             اختر قارئك
-            <span aria-hidden="true">←</span>
+            
           </a>
         </div>
         <div className="hero-verse">
@@ -689,6 +726,7 @@ export default function Home() {
             preload="none"
             src={audioUrl}
             onError={handleAudioError}
+            onEnded={handleAudioEnded}
             onPlaying={() => setPlayerError("")}
             aria-label={`تلاوة سورة ${selectedSurah?.name} بصوت ${selectedReciter?.name}`}
           />
@@ -700,10 +738,18 @@ export default function Home() {
             <span>ستظهر أدوات التشغيل هنا بعد اختيار السورة</span>
           </div>
         )}
-        <span className="player-live">
-          <i /> بث مباشر
-        </span>
+        
       </aside>
+      {showBackToTop && (
+        <button
+          className="back-to-top"
+          type="button"
+          aria-label="العودة إلى أعلى الصفحة"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          <Icon name="arrowUp" size={20} />
+        </button>
+      )}
       <div className="player-space" aria-hidden="true" />
     </main>
   );
