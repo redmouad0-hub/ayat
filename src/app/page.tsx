@@ -142,8 +142,8 @@ export default function Home() {
     async function loadCatalog() {
       try {
         const [recitersResponse, surahsResponse] = await Promise.all([
-          fetch("/api/reciters", { signal: controller.signal }),
-          fetch("/api/surahs", { signal: controller.signal }),
+          fetch("api/reciters", { signal: controller.signal }),
+          fetch("api/surahs", { signal: controller.signal }),
         ]);
         if (!recitersResponse.ok || !surahsResponse.ok) {
           throw new Error(
