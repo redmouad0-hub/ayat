@@ -24,7 +24,11 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(ellipse at 12% 41%, rgba(218, 228, 209, 0.21), transparent 34rem),
+    radial-gradient(
+      ellipse at 12% 41%,
+      rgba(218, 228, 209, 0.21),
+      transparent 34rem
+    ),
     var(--cream);
   color: var(--ink);
   font-family: Tahoma, "Segoe UI", Arial, sans-serif;
@@ -147,7 +151,9 @@ select:focus-visible {
   justify-content: center;
   min-width: 130px;
   padding: 10px 15px;
-  transition: background 160ms ease, border-color 160ms ease;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease;
 }
 
 .header-cta:hover {
@@ -158,8 +164,16 @@ select:focus-visible {
 .hero {
   align-items: center;
   background:
-    radial-gradient(ellipse at 83% 18%, rgba(255, 255, 246, 0.76), transparent 26%),
-    radial-gradient(ellipse at 70% 91%, rgba(203, 178, 126, 0.21), transparent 32%),
+    radial-gradient(
+      ellipse at 83% 18%,
+      rgba(255, 255, 246, 0.76),
+      transparent 26%
+    ),
+    radial-gradient(
+      ellipse at 70% 91%,
+      rgba(203, 178, 126, 0.21),
+      transparent 32%
+    ),
     linear-gradient(110deg, #e5eee4 0%, #f6f1e4 54%, #e8eee1 100%);
   border-bottom: 1px solid rgba(189, 152, 86, 0.16);
   display: flex;
@@ -237,7 +251,9 @@ select:focus-visible {
   font-size: 16px;
   gap: 22px;
   padding: 12px 19px;
-  transition: background 160ms ease, transform 160ms ease;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
 }
 
 .hero-button:hover {
@@ -438,7 +454,9 @@ select:focus-visible {
   height: 48px;
   padding: 0 13px;
   position: relative;
-  transition: border-color 150ms ease, box-shadow 150ms ease;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
 }
 
 .search-wrap:focus-within,
@@ -636,7 +654,9 @@ select:focus-visible {
 }
 
 @keyframes pulse {
-  to { opacity: 0.25; }
+  to {
+    opacity: 0.25;
+  }
 }
 
 .surah-search-wrap .select-indicator {
@@ -797,7 +817,7 @@ select:focus-visible {
 
 .audio-player {
   align-items: center;
-  background: rgba(255, 254, 250, 0.97);
+  background: rgba(228, 223, 203, 0.97);
   border-top: 1px solid #e6e2d6;
   bottom: 0;
   box-shadow: 0 -7px 24px rgba(29, 46, 34, 0.07);
@@ -912,7 +932,9 @@ select:focus-visible {
   inset-inline-end: 24px;
   padding: 0;
   position: fixed;
-  transition: background 160ms ease, transform 160ms ease;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
   width: 44px;
   z-index: 11;
 }
@@ -1155,6 +1177,7 @@ select:focus-visible {
   }
 
   .audio-player {
+    
     align-items: center;
     flex-wrap: wrap;
     gap: 6px 13px;
