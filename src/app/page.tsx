@@ -357,7 +357,6 @@ export default function Home() {
           </a>
           <a href="#reciter">القراء</a>
           <a href="#surahs">السور</a>
-          
         </nav>
         <a className="header-cta" href="#listen">
           <Icon name="headphones" size={17} />
@@ -367,22 +366,39 @@ export default function Home() {
 
       <section className="hero" id="home">
         <div className="hero-ornament ornament-one" aria-hidden="true">
-          ☪
+          <svg viewBox="0 0 100 100" fill="none">
+            <path
+              d="M67 8C42 15 28 40 34 64C40 87 64 98 86 88C63 91 43 73 42 51C41 30 52 15 67 8Z"
+              fill="currentColor"
+            />
+            <path
+              d="M70 25L75 37L88 38L78 47L81 60L70 53L59 60L62 47L52 38L65 37Z"
+              fill="currentColor"
+            />
+          </svg>
         </div>
+
         <div className="hero-ornament ornament-two" aria-hidden="true">
-          ☪
+          <svg viewBox="0 0 100 100" fill="none">
+            <path
+              d="M67 8C42 15 28 40 34 64C40 87 64 98 86 88C63 91 43 73 42 51C41 30 52 15 67 8Z"
+              fill="currentColor"
+            />
+            <path
+              d="M70 25L75 37L88 38L78 47L81 60L70 53L59 60L62 47L52 38L65 37Z"
+              fill="currentColor"
+            />
+          </svg>
         </div>
         <div className="hero-content">
-          
           <h1>
             أنصت بقلبك،
             <br />
             <span>واطمئن بآياته.</span>
           </h1>
-          
+
           <a className="hero-button " href="#reciter">
             اختر قارئك
-            
           </a>
         </div>
         <div className="hero-verse">
@@ -524,7 +540,10 @@ export default function Home() {
                 الرواية
                 <span className="field-hint">اختر الرواية</span>
               </label>
-              <div className="select-wrap moshaf-select-wrap" ref={moshafSelectRef}>
+              <div
+                className="select-wrap moshaf-select-wrap"
+                ref={moshafSelectRef}
+              >
                 <button
                   ref={moshafTriggerRef}
                   type="button"
@@ -666,11 +685,10 @@ export default function Home() {
           <span className="feature-icon">
             <Icon name="headphones" size={19} />
           </span>
-           <div>
+          <div>
             <strong>أكثر من قارئ</strong>
             <small>أصوات تحب الاستماع إليها</small>
           </div>
-         
         </div>
         <span className="feature-divider" />
         <div className="feature">
@@ -687,7 +705,7 @@ export default function Home() {
           <span className="feature-icon">
             <Icon name="sparkles" size={19} />
           </span>
-           <div>
+          <div>
             <strong>صوت نقي</strong>
             <small>استمع بأعلى جودة متاحة</small>
           </div>
@@ -738,7 +756,6 @@ export default function Home() {
             <span>ستظهر أدوات التشغيل هنا بعد اختيار السورة</span>
           </div>
         )}
-        
       </aside>
       {showBackToTop && (
         <button
